@@ -42,9 +42,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <span className="text-zinc-400">I build</span>
-            <span className="text-white min-w-[200px] text-left">
               <TypewriterHeadline />
-            </span>
           </motion.div>
 
           <motion.p
@@ -53,8 +51,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            Bridging the gap between flawless UI design and robust frontend
-            development to turn your visitors into customers.
+           Crafting responsive websites and modern mobile experiences with clean UI, smooth interactions, and attention to detail.
           </motion.p>
 
           <motion.div

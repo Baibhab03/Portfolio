@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -18,7 +17,7 @@ export default function Navbar() {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
     };
-    
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -30,7 +29,7 @@ export default function Navbar() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (["hero", "reviews", "contact"].includes(entry.target.id)) {
+            if (["hero", "reviews"].includes(entry.target.id)) {
               setActiveSection("");
             } else {
               setActiveSection(`#${entry.target.id}`);
@@ -38,10 +37,10 @@ export default function Navbar() {
           }
         });
       },
-      { rootMargin: "-20% 0px -70% 0px" } 
+      { rootMargin: "-20% 0px -70% 0px" }
     );
 
-    const sections = ["hero", "reviews", "contact", ...navItems.map((item) => item.href.substring(1))];
+    const sections = ["hero", "reviews", ...navItems.map((item) => item.href.substring(1))];
     sections.forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
@@ -51,74 +50,56 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none px-4 sm:px-6 py-4 sm:py-6 transition-all duration-300">
-      <div className="max-w-7xl mx-auto w-full flex items-center justify-between relative">
-        
-        {/* Logo - Leftmost */}
-        <motion.div 
-          className="pointer-events-auto z-50 flex-shrink-0"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <a href="#" className="text-xl font-extrabold tracking-tight hidden sm:block">
-            Baibhab<span className="text-[#38bdf8]">.</span>
-          </a>
-          {/* Mobile minimal logo to save space */}
-          <a href="#" className="text-xl font-extrabold tracking-tight sm:hidden">
-            B<span className="text-[#38bdf8]">.</span>
-          </a>
-        </motion.div>
-
-        {/* Center Nav Pill */}
-        <motion.nav
-          className={`pointer-events-auto absolute left-1/2 -translate-x-1/2 flex items-center gap-0.5 sm:gap-2 px-1 sm:px-2 py-1.5 transition-all duration-300 ${
-            scrolled
-              ? "rounded-full bg-[#0a0f1e]/80 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-              : "bg-transparent border-transparent"
+    <nav
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 ${scrolled ? "py-2" : "py-4 sm:py-6"
+        }`}
+    >
+      <div
+        className={`mx-auto relative max-w-7xl items-center rounded-2xl px-6 py-4 sm:px-10
+        border transition-all duration-500 ease-in-out
+        ${scrolled
+            ? "bg-[#030812]/80 backdrop-blur-xl border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] scale-[0.98]"
+            : "bg-transparent border-transparent scale-100"
           }`}
-          initial={{ y: -80, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          {navItems.map((item) => {
-            const isActive = activeSection === item.href;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`relative z-10 px-3 sm:px-5 py-1.5 sm:py-2 text-[11px] sm:text-sm font-medium transition-colors duration-200 rounded-full hover:text-white ${
-                  isActive ? "text-white" : "text-slate-400"
-                }`}
-              >
-                {item.label}
-                {isActive && (
-                  <motion.div
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full bg-white/[0.08] border border-white/[0.06]"
-                    style={{ zIndex: -1 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-              </a>
-            );
-          })}
-        </motion.nav>
+      >
+        {/* LOGO — pinned left */}
+        <a href="#" className="relative z-10 inline-flex items-center gap-2 group shrink-0">
+          {/* Desktop: always full name */}
+          <span className="hidden sm:inline text-xl font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            Baibhab<span className="text-[#38bdf8]">.</span>
+          </span>
+          {/* Mobile: full name at top, "B." when scrolled */}
+          <span className="sm:hidden text-lg font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent transition-all duration-300">
+            {scrolled ? <>B<span className="text-[#38bdf8]">.</span></> : <>Baibhab<span className="text-[#38bdf8]">.</span></>}
+          </span>
+        </a>
 
-        {/* Hire Me - Rightmost */}
-        <motion.div 
-          className="pointer-events-auto z-50 flex-shrink-0"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <a href="#contact" className="inline-flex items-center gap-1.5 rounded-full font-semibold transition-all duration-300 bg-[#38bdf8]/10 border border-[#38bdf8]/20 text-[#38bdf8] hover:bg-[#38bdf8] hover:text-[#050a14] text-[10px] sm:text-sm px-3 py-1.5 sm:px-5 sm:py-2 shadow-[0_0_15px_rgba(56,189,248,0.15)] hover:shadow-[0_0_25px_rgba(56,189,248,0.3)]">
-            <Sparkles className="w-3.5 h-3.5 hidden sm:block" />
-            Hire Me
-          </a>
-        </motion.div>
-        
+        {/* NAV LINKS — Absolutely centered */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="pointer-events-auto flex items-center gap-0.5 sm:gap-1 bg-white/[0.03] border border-white/5 p-1 rounded-xl backdrop-blur-md">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-3 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-sm font-medium transition-colors duration-300 ${isActive ? "text-white" : "text-gray-400 hover:text-white"
+                    }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-lg bg-white/10 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{item.label}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
       </div>
-    </header>
+    </nav>
   );
 }

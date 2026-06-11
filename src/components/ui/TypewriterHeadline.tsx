@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const phrases = [
-  "High-Converting UIs.",
-  "Lightning-Fast Apps.",
-  "Smooth Animations.",
-  "Flawless Mobile UX."
+  "Responsive Websites.",
+  "Modern Mobile Apps.",
+  "Smooth User Experiences.",
+  "Polished Interfaces."
 ];
 
 export default function TypewriterHeadline() {

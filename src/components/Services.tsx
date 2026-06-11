@@ -6,21 +6,21 @@ import { Layers, Code, Gauge } from "lucide-react";
 const services = [
   {
     icon: Layers,
-    title: "UI/UX Design",
+    title: "UI Design & Development",
     description:
-      "Crafting modern, accessible, and intuitive interfaces with pixel-perfect precision.",
+      "Creating clean, responsive, and visually polished interfaces with attention to usability and detail.",
   },
   {
     icon: Code,
-    title: "Frontend Development",
+    title: "Web & Mobile Apps",
     description:
-      "Building responsive web & mobile apps using React, Next.js, and modern tooling.",
+      "Building modern websites and mobile applications using React, Next.js, Flutter, and TypeScript.",
   },
   {
     icon: Gauge,
-    title: "Performance Optimization",
+    title: "Performance & UX",
     description:
-      "Ensuring lightning-fast load times and smooth 60fps animations across all devices.",
+      "Optimizing layouts, animations, and interactions to deliver smooth and enjoyable user experiences.",
   },
 ];
 
@@ -40,13 +40,13 @@ export default function Services() {
               className="mb-10 text-center lg:text-left"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-300 to-zinc-600">
-                My{" "}
+                What I{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00e5ff] to-[#39ff14]">
-                  Superpowers
+                  Build
                 </span>
               </h2>
               <p className="mt-4 text-zinc-400 text-sm sm:text-base leading-relaxed max-w-lg mx-auto lg:mx-0">
-                A relentless focus on bridging the gap between flawless design and robust, scalable frontend architecture.
+                From landing pages to mobile apps, I create clean and user-friendly experiences that work beautifully across devices.
               </p>
             </motion.div>
 
@@ -58,7 +58,7 @@ export default function Services() {
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  transition={{ duration: 0.5, delay: i * 0.10 }}
                 >
                   <div className="w-12 h-12 rounded-xl bg-[#00e5ff]/10 text-[#00e5ff] flex items-center justify-center shrink-0 transition-colors group-hover:bg-[#00e5ff] group-hover:text-zinc-950">
                     <s.icon className="w-6 h-6" />

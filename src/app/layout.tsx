@@ -11,7 +11,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Baibhab | UI Designer & Frontend Developer",
+  title: "My Portfolio - Baibhab Ghosh",
   description:
     "I design and build high-performance web & mobile experiences. Premium freelance portfolio.",
 };

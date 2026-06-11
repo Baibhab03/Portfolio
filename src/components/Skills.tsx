@@ -4,19 +4,20 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const techSkills = [
-  { name: "HTML5 / CSS3", level: 95 },
-  { name: "JavaScript (ES6+)", level: 92 },
-  { name: "React & Next.js", level: 95 },
-  { name: "Tailwind CSS", level: 90 },
-  { name: "TypeScript", level: 85 },
-  { name: "Flutter", level: 80 },
+  { name: "HTML5 / CSS3", level: 90 },
+  { name: "JavaScript (ES6+)", level: 80 },
+  { name: "React", level: 85 },
+  { name: "Next.js", level: 80 },
+  { name: "Tailwind CSS", level: 88 },
+  { name: "TypeScript", level: 75 },
+  { name: "Flutter", level: 75 },
 ];
 
 const proSkills = [
-  { name: "Frontend Arch", level: 88 },
-  { name: "UI/UX Design", level: 92 },
-  { name: "Performance", level: 85 },
-  { name: "Cross-Platform", level: 80 },
+  { name: "Responsive Design", level: 92 },
+  { name: "UI Development", level: 88 },
+  { name: "Mobile Interfaces", level: 85 },
+  { name: "Performance Optimization", level: 80 },
 ];
 
 export default function Skills() {
