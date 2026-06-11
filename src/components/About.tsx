@@ -12,7 +12,6 @@ export default function About() {
     offset: ["start end", "end start"],
   });
 
-  // HUD Perspective Tilt
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
 
@@ -35,7 +34,6 @@ export default function About() {
           </h2>
         </motion.div>
 
-        {/* Bento Grid Container with HUD Parallax */}
         <motion.div
           ref={containerRef}
           style={{ rotateX, scale, transformPerspective: 1200 }}
@@ -119,7 +117,7 @@ export default function About() {
             </TiltCard>
           </motion.div>
 
-          {/* Card 4: Visual Eye-Candy / Code Mock */}
+          {/* Card 4: Code Mock */}
           <motion.div
             className="md:col-span-2 lg:col-span-2 row-span-1"
             initial={{ opacity: 0, y: 20 }}
@@ -256,7 +254,7 @@ export default function About() {
                   >
                     ▋
                   </span>
-                </motion.div>
+                </motion.div>                
 
               </div>
             </TiltCard>
