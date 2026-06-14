@@ -53,7 +53,7 @@ const projects = [
     tags: ["React", "API Integration", "Tailwind"],
     gradient: "from-slate-800/80 to-sky-900/30",
     image: "/Weatherly.png",
-    liveLink: "#",
+    liveLink: "https://weatherly-coral.vercel.app/",
     githubLink: "#",
   },
 ];
