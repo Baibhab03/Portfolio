@@ -52,7 +52,7 @@ const projects = [
       "A dynamic environmental telemetry interface that fetches and parses global multi-layered atmospheric API datasets in real time. Features smooth asynchronous telemetry transitions and clean layouts.",
     tags: ["React", "API Integration", "Tailwind"],
     gradient: "from-slate-800/80 to-sky-900/30",
-    image: "",
+    image: "/Weatherly.png",
     liveLink: "#",
     githubLink: "#",
   },
