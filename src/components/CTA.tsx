@@ -55,7 +55,7 @@ export default function CTA() {
               <div className="space-y-4">
 
                 <a
-                  href="mailto:your@email.com"
+                  href="mailto:baibhavghosh03@email.com"
                   className="group flex items-center justify-between rounded-2xl border border-white/5 bg-black/30 px-5 py-4 hover:border-[#38bdf8]/30 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
@@ -63,7 +63,7 @@ export default function CTA() {
                     <div>
                       <p className="text-white font-medium">Email</p>
                       <p className="text-xs text-zinc-500">
-                        your@email.com
+                        baibhavghosh03@email.com
                       </p>
                     </div>
                   </div>
@@ -72,7 +72,7 @@ export default function CTA() {
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/your-profile"
+                  href="https://www.linkedin.com/in/baibhab-ghosh-110187384"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-between rounded-2xl border border-white/5 bg-black/30 px-5 py-4 hover:border-[#38bdf8]/30 transition-all duration-300"
@@ -91,7 +91,7 @@ export default function CTA() {
                 </a>
 
                 <a
-                  href="https://github.com/Baibahb03"
+                  href="https://github.com/Baibhab03"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-between rounded-2xl border border-white/5 bg-black/30 px-5 py-4 hover:border-[#38bdf8]/30 transition-all duration-300"
