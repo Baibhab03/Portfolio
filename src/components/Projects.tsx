@@ -15,7 +15,7 @@ const projects = [
     gradient: "from-sky-950/40 to-slate-900/80",
     image: "",
     liveLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/Baibhab03/Shop",
   },
   {
     title: "Click On",
@@ -35,7 +35,7 @@ const projects = [
     gradient: "from-blue-900/30 to-slate-900/90",
     image: "/CourseCompass.png",
     liveLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/Baibhab03/Course-Compass",
   },
   {
     title: "Ant Learning Hub",
