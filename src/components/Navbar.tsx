@@ -83,7 +83,7 @@ export default function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-sm font-medium transition-colors duration-300 ${isActive ? "text-white" : "text-gray-400 hover:text-white"
+                  className={`relative px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-base font-medium transition-colors duration-300 ${isActive ? "text-white" : "text-gray-400 hover:text-white"
                     }`}
                 >
                   {isActive && (

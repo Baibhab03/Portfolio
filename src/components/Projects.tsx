@@ -1,15 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { motion } from "framer-motion";
-import { ExternalLink, GitBranch } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, GitBranch, X } from "lucide-react";
 import TiltCard from "@/components/ui/TiltCard";
 
 const projects = [
   {
     title: "My-Shop Storefront",
     description:
-      "A high-converting digital storefront built from raw web fundamentals. Features optimized DOM trees, asset compression, custom CSS grid layouts, and pixel-perfect interactive animation feedback hooks.",
+      "A responsive e-commerce storefront built with HTML, CSS, and JavaScript. Features product listings, modern layouts, smooth interactions, and a clean shopping experience across desktop and mobile devices.",
     tags: ["HTML5", "CSS3", "JavaScript"],
     gradient: "from-sky-950/40 to-slate-900/80",
     image: "",
@@ -19,8 +20,8 @@ const projects = [
   {
     title: "Click On",
     description:
-      "An ultra-fast, real-time hyper-local delivery cross-platform application. Integrates complex state management architectures and modular interface components designed for instantaneous checkout transactions.",
-    tags: ["React Native", "JavaScript", "Mobile UI"],
+      "A mobile-first delivery app interface designed for fast ordering and easy navigation. Built with React Native and TypeScript, focusing on clean UI, intuitive user flows, and responsive performance.",
+    tags: ["React Native", "TypeScript", "Mobile UI"],
     gradient: "from-slate-800/60 to-blue-900/40",
     image: "",
     liveLink: "#",
@@ -29,36 +30,37 @@ const projects = [
   {
     title: "CourseCompass",
     description:
-      "A high-performance mobile attendance tracking dashboard built with cross-platform primitives. Utilizes clean reactive logic streams, asynchronous data models, and native UI caching for zero-latency operations.",
-    tags: ["Flutter", "Dart", "Mobile Architecture"],
+      "A student attendance and course management dashboard designed to simplify academic tracking. Features organized data views, responsive layouts, and a user-friendly interface for everyday use.",
+    tags: ["Flutter", "Dart", "Cloud Firestore"],
     gradient: "from-blue-900/30 to-slate-900/90",
-    image: "",
+    image: "/CourseCompass.png",
     liveLink: "#",
     githubLink: "#",
   },
   {
     title: "Ant Learning Hub",
     description:
-      "A premium corporate educational platform engineered for seamless resource distribution. Optimized with Next.js Server-Side Rendering (SSR) for instantaneous page-load performance and advanced SEO structural routing.",
+      "A responsive website built with React and Tailwind CSS, featuring modern layouts, reusable components, and a clean user experience across all screen sizes.",
     tags: ["Next.js", "React", "Tailwind"],
     gradient: "from-indigo-950/50 to-slate-900/80",
     image: "/AntHub.png",
     liveLink: "https://www.antlearninghub.com/",
-    githubLink: "#",
+    // githubLink: "#",
   },
   {
     title: "Weatherly",
     description:
-      "A dynamic environmental telemetry interface that fetches and parses global multi-layered atmospheric API datasets in real time. Features smooth asynchronous telemetry transitions and clean layouts.",
+      "A real-time weather dashboard that fetches live weather data through API integration. Includes location search, detailed forecasts, responsive layouts, and a polished multi-device experience.",
     tags: ["React", "API Integration", "Tailwind"],
     gradient: "from-slate-800/80 to-sky-900/30",
     image: "/Weatherly.png",
     liveLink: "https://weatherly-coral.vercel.app/",
-    githubLink: "#",
+    githubLink: "https://github.com/Baibhab03/Weatherly",
   },
 ];
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   return (
     <section className="py-24 px-5 relative overflow-hidden" id="projects">
@@ -93,11 +95,14 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
             >
-              <TiltCard className="h-full flex flex-col group">
+              <TiltCard className="h-full flex flex-col group cursor-pointer" onClick={() => setSelectedProject(p)}>
                 {/* Placeholder image with shimmer */}
                 <div
                   className={`relative aspect-video bg-gradient-to-b ${p.gradient} overflow-hidden border-b border-white/5 group-hover:border-white/10 transition-colors`}
                 >
+                  <div className="absolute top-3 right-3 z-30 bg-black/50 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-white opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+                    Tap to Expand
+                  </div>
                   {p.image ? (
                     <img 
                       src={p.image} 
@@ -139,19 +144,23 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <ExternalLink className="w-4 h-4" />
                       View Live Site
                     </a>
-                    <a
-                      href={p.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-[#38bdf8] transition-colors"
-                    >
-                      <GitBranch className="w-4 h-4" />
-                      GitHub Repo
-                    </a>
+                    {p.githubLink && (
+                      <a
+                        href={p.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-[#38bdf8] transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <GitBranch className="w-4 h-4" />
+                        GitHub Repo
+                      </a>
+                    )}
                   </div>
                 </div>
               </TiltCard>
@@ -159,6 +168,95 @@ export default function Projects() {
           ))}
         </motion.div>
       </div>
+
+      {/* Expanded Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm"
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              layoutId={`project-${selectedProject.title}`}
+              className="bg-[#0a0f1e] border border-white/10 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.8)] relative"
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            >
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-50 p-2 bg-black/50 backdrop-blur-md rounded-full text-slate-300 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className={`relative aspect-video sm:aspect-[21/9] bg-gradient-to-b ${selectedProject.gradient} w-full flex-shrink-0`}>
+                {selectedProject.image ? (
+                  <img 
+                    src={selectedProject.image} 
+                    alt={selectedProject.title} 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-slate-500 font-medium tracking-widest uppercase">
+                    Placeholder
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] to-transparent h-1/2 mt-auto" />
+              </div>
+
+              <div className="p-6 sm:p-10 flex flex-col flex-1">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {selectedProject.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-sm text-[10px] sm:text-xs uppercase tracking-widest font-bold bg-[#050a14] text-[#38bdf8] border border-[#38bdf8]/20"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className="text-2xl sm:text-4xl font-extrabold mb-4 text-white">{selectedProject.title}</h3>
+                
+                <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+                  {selectedProject.description}
+                </p>
+
+                <div className="flex flex-wrap gap-4 mt-auto pt-6 border-t border-white/10">
+                  {selectedProject.liveLink && selectedProject.liveLink !== "#" && (
+                    <a
+                      href={selectedProject.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-black font-bold hover:bg-zinc-200 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      View Live Site
+                    </a>
+                  )}
+                  {selectedProject.githubLink && selectedProject.githubLink !== "#" && (
+                    <a
+                      href={selectedProject.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/[0.05] border border-white/10 text-white font-bold hover:bg-white/10 transition-colors"
+                    >
+                      <GitBranch className="w-4 h-4" />
+                      GitHub Repository
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

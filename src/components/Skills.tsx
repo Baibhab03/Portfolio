@@ -6,7 +6,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const techSkills = [
   { name: "HTML5 / CSS3", level: 90 },
   { name: "JavaScript (ES6+)", level: 80 },
-  { name: "React", level: 85 },
+  { name: "React Native", level: 85 },
+  { name: "React", level: 75 },
   { name: "Next.js", level: 80 },
   { name: "Tailwind CSS", level: 88 },
   { name: "TypeScript", level: 75 },
@@ -85,7 +86,7 @@ export default function Skills() {
           {/* Right Column - Radial Progress Cores */}
           <div className="flex flex-col gap-6 sm:gap-8 mt-4 lg:mt-0">
             <h3 className="text-2xl font-bold mb-2 text-white text-center lg:text-left">Professional Skills</h3>
-            <div className="grid grid-cols-2 gap-6 sm:gap-12 justify-items-center lg:justify-items-start">
+            <div className="grid grid-cols-2 gap-10 md:gap-14 max-w-md mx-auto">
               {proSkills.map((skill, index) => {
                 const radius = 40;
                 const circumference = 2 * Math.PI * radius;

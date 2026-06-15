@@ -6,9 +6,10 @@ import { motion, useSpring, useTransform } from "framer-motion";
 interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
-export default function TiltCard({ children, className = "" }: TiltCardProps) {
+export default function TiltCard({ children, className = "", onClick }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -53,6 +54,7 @@ export default function TiltCard({ children, className = "" }: TiltCardProps) {
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
       style={{
         rotateX,
         rotateY,

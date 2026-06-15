@@ -49,8 +49,35 @@ export default function Footer() {
               </li>
             </ul>
             <div className="flex flex-col gap-1">
-              <p className="text-[0.65rem] text-slate-500 tracking-wide">Responses within 24-48 hours</p>
-              <p className="text-[0.65rem] text-slate-500 tracking-wide">Personal consultation guaranteed</p>
+              <p className="text-[0.65rem] text-slate-500 tracking-wide">Typically replies within 24 hours</p>
+              <p className="text-[0.65rem] text-slate-500 tracking-wide">Available for freelance projects</p>
+              <div className="flex gap-4 mt-3">
+                <a 
+                  href="https://github.com/Baibhab03" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-slate-400 hover:text-white transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.03c3.15-.38 6.5-1.4 6.5-7a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.6 2.8 5.5 3.1 5.5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5.6 3.3 6.6 6.5 7a4.8 4.8 0 0 0-1 3.03V22"></path>
+                    <path d="M9 20c-5 1.5-5-2.5-7-3"></path>
+                  </svg>
+                  <span className="sr-only">GitHub</span>
+                </a>
+                <a 
+                   href="https://www.linkedin.com/in/baibhab-ghosh-110187384"
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-slate-400 hover:text-[#38bdf8] transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect width="4" height="12" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                  <span className="sr-only">LinkedIn</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -60,10 +87,6 @@ export default function Footer() {
           <p className="text-xs text-slate-500 text-center sm:text-left">
             © {new Date().getFullYear()} Baibhab. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-xs text-slate-500 hover:text-slate-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-xs text-slate-500 hover:text-slate-300 transition-colors">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>
