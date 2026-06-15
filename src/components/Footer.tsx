@@ -43,9 +43,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+910000000000" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                {/* <a href="tel:+919883715782" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
                   +91 9883715782
-                </a>
+                </a> */}
               </li>
             </ul>
             <div className="flex flex-col gap-1">
