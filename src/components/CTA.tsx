@@ -63,7 +63,7 @@ export default function CTA() {
                     <div>
                       <p className="text-white font-medium">Email</p>
                       <p className="text-xs text-zinc-500">
-                        baibhavghosh03@email.com
+                        baibhavghosh03@gmail.com
                       </p>
                     </div>
                   </div>

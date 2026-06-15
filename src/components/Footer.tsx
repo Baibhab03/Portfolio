@@ -38,7 +38,7 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-4 mb-6">
               <li>
-                <a href="mailto:hello@baibhab.dev" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                <a href="mailto:baibhavghosh03@gmail.com" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
                   baibhavghosh03@gmail.com
                 </a>
               </li>
