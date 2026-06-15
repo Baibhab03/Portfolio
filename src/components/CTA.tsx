@@ -55,7 +55,7 @@ export default function CTA() {
               <div className="space-y-4">
 
                 <a
-                  href="mailto:baibhavghosh03@email.com"
+                  href="mailto:baibhavghosh03@gmail.com"
                   className="group flex items-center justify-between rounded-2xl border border-white/5 bg-black/30 px-5 py-4 hover:border-[#38bdf8]/30 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
