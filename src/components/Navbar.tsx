@@ -54,11 +54,11 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 ${scrolled ? "py-2" : "py-4 sm:py-6"
         }`}
     >
-      <div className="mx-auto relative max-w-7xl flex items-center justify-between sm:justify-start px-2 sm:px-10 py-2 sm:py-4 transition-all duration-500 ease-in-out">
+      <div className="mx-auto relative max-w-7xl flex items-center justify-between sm:justify-start px-1.5 sm:px-10 py-2 sm:py-4 transition-all duration-500 ease-in-out">
         {/* Logo pill */}
         <a 
           href="#" 
-          className="relative z-10 inline-flex items-center shrink-0 px-3 py-1.5 sm:px-6 sm:py-3 rounded-full transition-all duration-500 bg-[#0a0f1e]/60 border border-white/[0.08] backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]"
+          className="relative z-10 inline-flex items-center shrink-0 px-2.5 py-1.5 sm:px-6 sm:py-3 rounded-full transition-all duration-500 bg-[#0a0f1e]/60 border border-white/[0.08] backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]"
         >
           <span className="hidden sm:inline text-xl font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             Baibhab<span className="text-[#38bdf8]">.</span>
@@ -77,7 +77,7 @@ export default function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3.5 py-1.5 sm:px-6 sm:py-2.5 text-xs sm:text-base font-bold transition-colors duration-300 rounded-full ${isActive ? "text-white" : "text-gray-400 hover:text-white"}`}
+                  className={`relative px-2.5 py-1.5 sm:px-6 sm:py-2.5 text-sm sm:text-base font-bold transition-colors duration-300 rounded-full ${isActive ? "text-white" : "text-gray-400 hover:text-white"}`}
                 >
                   {isActive && (
                     <motion.div
