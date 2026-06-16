@@ -54,7 +54,7 @@ export default function CTA() {
               {/* Right Side */}
               <div className="space-y-4">
 
-                {/* <a
+                <a
                   href="mailto:baibhavghosh03@gmail.com"
                   className="group flex items-center justify-between rounded-2xl border border-white/5 bg-black/30 px-5 py-4 hover:border-[#38bdf8]/30 transition-all duration-300"
                 >
@@ -69,7 +69,7 @@ export default function CTA() {
                   </div>
 
                   <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
-                </a> */}
+                </a>
 
                 <a
                   href="https://www.linkedin.com/in/baibhab-ghosh-110187384"

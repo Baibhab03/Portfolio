@@ -54,42 +54,35 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 ${scrolled ? "py-2" : "py-4 sm:py-6"
         }`}
     >
-      <div
-        className={`mx-auto relative max-w-7xl items-center rounded-2xl px-6 py-4 sm:px-10
-        border transition-all duration-500 ease-in-out
-        ${scrolled
-            ? "bg-[#030812]/80 backdrop-blur-xl border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] scale-[0.98]"
-            : "bg-transparent border-transparent scale-100"
-          }`}
-      >
-        {/* LOGO — pinned left */}
-        <a href="#" className="relative z-10 inline-flex items-center gap-2 group shrink-0">
-          {/* Desktop: always full name */}
+      <div className="mx-auto relative max-w-7xl flex items-center justify-between sm:justify-start px-2 sm:px-10 py-2 sm:py-4 transition-all duration-500 ease-in-out">
+        {/* Logo pill */}
+        <a 
+          href="#" 
+          className="relative z-10 inline-flex items-center shrink-0 px-3 py-1.5 sm:px-6 sm:py-3 rounded-full transition-all duration-500 bg-[#0a0f1e]/60 border border-white/[0.08] backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]"
+        >
           <span className="hidden sm:inline text-xl font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             Baibhab<span className="text-[#38bdf8]">.</span>
           </span>
-          {/* Mobile: full name at top, "B." when scrolled */}
-          <span className="sm:hidden text-lg font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent transition-all duration-300">
+          <span className="sm:hidden text-sm font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             {scrolled ? <>B<span className="text-[#38bdf8]">.</span></> : <>Baibhab<span className="text-[#38bdf8]">.</span></>}
           </span>
         </a>
 
-        {/* NAV LINKS — Absolutely centered */}
+        {/* Nav links pill — absolutely centered on all screens */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="pointer-events-auto flex items-center gap-0.5 sm:gap-1 bg-white/[0.03] border border-white/5 p-1 rounded-xl backdrop-blur-md">
+          <div className="pointer-events-auto flex items-center gap-0.5 sm:gap-2 p-1 sm:p-1.5 rounded-full bg-[#0a0f1e]/60 border border-white/[0.08] backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]">
             {navItems.map((item) => {
               const isActive = activeSection === item.href;
               return (
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-base font-medium transition-colors duration-300 ${isActive ? "text-white" : "text-gray-400 hover:text-white"
-                    }`}
+                  className={`relative px-3.5 py-1.5 sm:px-6 sm:py-2.5 text-xs sm:text-base font-bold transition-colors duration-300 rounded-full ${isActive ? "text-white" : "text-gray-400 hover:text-white"}`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-lg bg-white/10 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+                      className="absolute inset-0 rounded-full bg-white/10 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}

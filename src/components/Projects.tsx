@@ -6,31 +6,51 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, GitBranch, X } from "lucide-react";
 import TiltCard from "@/components/ui/TiltCard";
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  tags: string[];
+  gradient: string;
+  image: string;
+  liveLink: string;
+  githubLink?: string;
+  isUnderConstruction?: boolean;
+  longDescription?: string;
+};
+
+const projects: Project[] = [
   {
     title: "My-Shop Storefront",
     description:
       "A responsive e-commerce storefront built with HTML, CSS, and JavaScript. Features product listings, modern layouts, smooth interactions, and a clean shopping experience across desktop and mobile devices.",
+    longDescription:
+      "• Built responsive product and category layouts • Designed mobile-first navigation and shopping flow • Created reusable UI sections and components • Implemented smooth hover effects and transitions • Optimized layouts for desktop, tablet, and mobile devices • Focused on clean design and user-friendly interactions",
     tags: ["HTML5", "CSS3", "JavaScript"],
     gradient: "from-sky-950/40 to-slate-900/80",
     image: "",
     liveLink: "#",
     githubLink: "https://github.com/Baibhab03/Shop",
+    isUnderConstruction: true,
   },
   {
     title: "Click On",
     description:
       "A mobile-first delivery app interface designed for fast ordering and easy navigation. Built with React Native and TypeScript, focusing on clean UI, intuitive user flows, and responsive performance.",
-    tags: ["React Native", "TypeScript", "Mobile UI"],
+    longDescription:
+      "• Designed clean and intuitive ordering screens • Built responsive mobile-first user interfaces • Created reusable components for scalability • Focused on smooth navigation between screens • Implemented modern design patterns and layouts • Optimized the experience for different screen sizes",
     gradient: "from-slate-800/60 to-blue-900/40",
+    tags: ["React Native", "TypeScript", "Mobile UI"],
     image: "",
     liveLink: "#",
     githubLink: "#",
+    isUnderConstruction: true,
   },
   {
     title: "CourseCompass",
     description:
       "A student attendance and course management dashboard designed to simplify academic tracking. Features organized data views, responsive layouts, and a user-friendly interface for everyday use.",
+    longDescription:
+      "• Designed attendance and course tracking interfaces • Organized academic information into clear layouts • Created responsive dashboard components • Improved usability through clean visual hierarchy • Focused on accessibility and readability • Optimized the dashboard for desktop and mobile viewing",
     tags: ["Flutter", "Dart", "Cloud Firestore"],
     gradient: "from-blue-900/30 to-slate-900/90",
     image: "/CourseCompass.png",
@@ -41,6 +61,8 @@ const projects = [
     title: "Ant Learning Hub",
     description:
       "A responsive website built with React and Tailwind CSS, featuring modern layouts, reusable components, and a clean user experience across all screen sizes.",
+    longDescription:
+      "• Built using React and Tailwind CSS • Developed reusable and maintainable UI components • Created responsive layouts for all screen sizes • Implemented smooth animations and interactions • Focused on clean visual hierarchy and readability • Followed modern frontend development practices",
     tags: ["Next.js", "React", "Tailwind"],
     gradient: "from-indigo-950/50 to-slate-900/80",
     image: "/AntHub.png",
@@ -51,6 +73,8 @@ const projects = [
     title: "Weatherly",
     description:
       "A real-time weather dashboard that fetches live weather data through API integration. Includes location search, detailed forecasts, responsive layouts, and a polished multi-device experience.",
+    longDescription:
+      "• Integrated live weather data using external APIs • Implemented location-based weather search • Displayed forecasts and weather conditions dynamically • Designed responsive layouts for all devices • Created smooth UI transitions and loading states • Focused on performance and user-friendly interactions",
     tags: ["React", "API Integration", "Tailwind"],
     gradient: "from-slate-800/80 to-sky-900/30",
     image: "/Weatherly.png",
@@ -60,7 +84,7 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <section className="py-24 px-5 relative overflow-hidden" id="projects">
@@ -100,20 +124,24 @@ export default function Projects() {
                 <div
                   className={`relative aspect-video bg-gradient-to-b ${p.gradient} overflow-hidden border-b border-white/5 group-hover:border-white/10 transition-colors`}
                 >
-                  <div className="absolute top-3 right-3 z-30 bg-black/50 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-white opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-3 right-3 z-30 bg-black/50 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-white transition-opacity duration-300">
                     Tap to Expand
                   </div>
+                  {p.isUnderConstruction && (
+                    <div className="absolute top-3 left-3 z-30 bg-[#38bdf8]/20 backdrop-blur-md border border-[#38bdf8]/30 rounded-full px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-[#38bdf8] shadow-lg">
+                      Under Construction
+                    </div>
+                  )}
                   {p.image ? (
-                    <img 
-                      src={p.image} 
-                      alt={p.title} 
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                     />
                   ) : (
                     <>
                       <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
-                      <div className="absolute inset-0 flex items-center justify-center text-slate-500 text-sm font-medium tracking-widest uppercase">
-                        Placeholder
+                      <div className="absolute inset-0 flex items-center justify-center">
                       </div>
                     </>
                   )}
@@ -139,27 +167,36 @@ export default function Projects() {
 
                   {/* Links */}
                   <div className="flex gap-4 mt-auto">
-                    <a
-                      href={p.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      View Live Site
-                    </a>
-                    {p.githubLink && (
-                      <a
-                        href={p.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-[#38bdf8] transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <GitBranch className="w-4 h-4" />
-                        GitHub Repo
-                      </a>
+                    {p.isUnderConstruction ? (
+                      <span className="text-sm font-medium text-slate-500 italic flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
+                        Details coming soon
+                      </span>
+                    ) : (
+                      <>
+                        <a
+                          href={p.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          View Live Site
+                        </a>
+                        {p.githubLink && (
+                          <a
+                            href={p.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-[#38bdf8] transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <GitBranch className="w-4 h-4" />
+                            GitHub Repo
+                          </a>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
@@ -188,7 +225,7 @@ export default function Projects() {
               exit={{ scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
             >
-              <button 
+              <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 z-50 p-2 bg-black/50 backdrop-blur-md rounded-full text-slate-300 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
               >
@@ -197,14 +234,13 @@ export default function Projects() {
 
               <div className={`relative aspect-video sm:aspect-[21/9] bg-gradient-to-b ${selectedProject.gradient} w-full flex-shrink-0`}>
                 {selectedProject.image ? (
-                  <img 
-                    src={selectedProject.image} 
-                    alt={selectedProject.title} 
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-slate-500 font-medium tracking-widest uppercase">
-                    Placeholder
+                  <div className="absolute inset-0 flex items-center justify-center">
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] to-transparent h-1/2 mt-auto" />
@@ -223,33 +259,57 @@ export default function Projects() {
                 </div>
 
                 <h3 className="text-2xl sm:text-4xl font-extrabold mb-4 text-white">{selectedProject.title}</h3>
-                
-                <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+
+                <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-4">
                   {selectedProject.description}
                 </p>
 
+                {(selectedProject).longDescription && (
+                  <ul className="text-slate-400 text-sm sm:text-base leading-relaxed mb-8 space-y-3">
+                    {(selectedProject).longDescription
+                      .split("•")
+                      .map((point: string) => point.trim())
+                      .filter(Boolean)
+                      .map((point: string, idx: number) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <span className="text-[#38bdf8] mt-0.5 text-lg leading-none">•</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                  </ul>
+                )}
+
                 <div className="flex flex-wrap gap-4 mt-auto pt-6 border-t border-white/10">
-                  {selectedProject.liveLink && selectedProject.liveLink !== "#" && (
-                    <a
-                      href={selectedProject.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-black font-bold hover:bg-zinc-200 transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      View Live Site
-                    </a>
-                  )}
-                  {selectedProject.githubLink && selectedProject.githubLink !== "#" && (
-                    <a
-                      href={selectedProject.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/[0.05] border border-white/10 text-white font-bold hover:bg-white/10 transition-colors"
-                    >
-                      <GitBranch className="w-4 h-4" />
-                      GitHub Repository
-                    </a>
+                  {(selectedProject).isUnderConstruction ? (
+                    <div className="px-6 py-4 rounded-xl bg-[#38bdf8]/10 border border-[#38bdf8]/20 text-[#38bdf8] font-bold w-full text-center flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-[#38bdf8] animate-ping" />
+                      Currently Under Construction. Links and details will be updated soon.
+                    </div>
+                  ) : (
+                    <>
+                      {selectedProject.liveLink && selectedProject.liveLink !== "#" && (
+                        <a
+                          href={selectedProject.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-black font-bold hover:bg-zinc-200 transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          View Live Site
+                        </a>
+                      )}
+                      {selectedProject.githubLink && selectedProject.githubLink !== "#" && (
+                        <a
+                          href={selectedProject.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/[0.05] border border-white/10 text-white font-bold hover:bg-white/10 transition-colors"
+                        >
+                          <GitBranch className="w-4 h-4" />
+                          GitHub Repository
+                        </a>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
