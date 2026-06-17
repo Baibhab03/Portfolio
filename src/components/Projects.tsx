@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, GitBranch, X } from "lucide-react";
 import TiltCard from "@/components/ui/TiltCard";
@@ -85,6 +85,17 @@ const projects: Project[] = [
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedProject]);
 
   return (
     <section className="py-24 px-5 relative overflow-hidden" id="projects">
