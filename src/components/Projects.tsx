@@ -20,7 +20,7 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "My-Shop Storefront",
+    title: "MidGuard",
     description:
       "A responsive e-commerce storefront built with HTML, CSS, and JavaScript. Features product listings, modern layouts, smooth interactions, and a clean shopping experience across desktop and mobile devices.",
     longDescription:
@@ -28,7 +28,7 @@ const projects: Project[] = [
     tags: ["HTML5", "CSS3", "JavaScript"],
     gradient: "from-sky-950/40 to-slate-900/80",
     image: "",
-    liveLink: "#",
+    liveLink: "https://baibhab03.github.io/Shop/MidGuard/",
     githubLink: "https://github.com/Baibhab03/Shop",
     isUnderConstruction: true,
   },
